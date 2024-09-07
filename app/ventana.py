@@ -1,29 +1,42 @@
 from nave import Nave
-from costo_aluminio import CostoAluminio
-from costo_vidrio import CostoVidrio
-from costo_otros import CostoOtros
-from descuento import Descuento
 
 class Ventana:
-    def __init__(self, ancho, alto, estilo, tipo_acabado, tipo_vidrio, esmerilado=False, cantidad=1):
-        self.nave = Nave(estilo, ancho, alto)
-        self.tipo_acabado = tipo_acabado
-        self.tipo_vidrio = tipo_vidrio
+    def __init__(self, ancho_cm, alto_cm, estilo, acabado, vidrio, esmerilado, cantidad):
+        self.nave = Nave(ancho_cm, alto_cm)
+        self.estilo = estilo
+        self.acabado = acabado
+        self.vidrio = vidrio
         self.esmerilado = esmerilado
         self.cantidad = cantidad
 
-    def calcular_costo(self):
-        costo_aluminio = CostoAluminio(self.nave, self.tipo_acabado)
-        costo_vidrio = CostoVidrio(self.nave, self.tipo_vidrio, self.esmerilado)
-        costo_otros = CostoOtros(self.nave)
-        descuento = Descuento(self.cantidad)
-        
-        costo_total_aluminio = costo_aluminio.calcular()
-        costo_total_vidrio = costo_vidrio.calcular()
-        costo_total_otros = costo_otros.calcular()
-        descuento_aplicado = descuento.calcular(costo_total_aluminio + costo_total_vidrio + costo_total_otros)
-        
-        costo_total = (costo_total_aluminio + costo_total_vidrio + costo_total_otros) * self.cantidad
-        costo_total -= descuento_aplicado
-        
-        return costo_total
+    def calcular_costo_acabado(self):
+        acabados = {
+            "Pulido": 50700,
+            "Lacado Brillante": 54200,
+            "Lacado Mate": 53600,
+            "Anodizado": 57300
+        }
+        return self.nave.calcular_perimetro() * acabados[self.acabado]
+
+    def calcular_costo_vidrio(self):
+        vidrios = {
+            "Transparente": 8.25,
+            "Bronce": 9.15,
+            "Azul": 12.75
+        }
+        precio_vidrio = vidrios[self.vidrio]
+        if self.esmerilado.lower() == 'sí':
+            precio_vidrio += 5.20
+        return self.nave.calcular_area_vidrio() * precio_vidrio
+
+    def calcular_costo_esquinas(self):
+        return 4 * 4310  # 4 esquinas por ventana
+
+    def calcular_costo_total(self):
+        costo_acabado = self.calcular_costo_acabado()
+        costo_vidrio = self.calcular_costo_vidrio()
+        costo_esquinas = self.calcular_costo_esquinas()
+        costo_total_ventana = costo_acabado + costo_vidrio + costo_esquinas
+        if self.cantidad > 100:
+            costo_total_ventana *= 0.90  # Aplicar descuento del 10%
+        return costo_total_ventana * self.cantidad
