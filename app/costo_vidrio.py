@@ -1,22 +1,23 @@
-class CostoAluminio:
-    precios_acabado = {
-        'Pulido': 50700,
-        'Lacado Brillante': 54200,
-        'Lacado Mate': 53600,
-        'Anodizado': 57300
+class CostoVidrio:
+    precios_vidrio = {
+        'Transparente': 8.25,
+        'Bronce': 9.15,
+        'Azul': 12.75
     }
+    
+    precio_esmerilado = 5.20
 
-    def __init__(self, ancho, alto, estilo, tipo_acabado):
-        self.ancho = ancho
-        self.alto = alto
-        self.estilo = estilo
-        self.tipo_acabado = tipo_acabado
+    def __init__(self, nave, tipo_vidrio, esmerilado=False):
+        self.nave = nave
+        self.tipo_vidrio = tipo_vidrio
+        self.esmerilado = esmerilado
 
     def calcular(self):
-        # Aquí debes implementar la lógica para calcular el costo basado en el tipo de acabado y dimensiones
-        # Por ejemplo:
-        costo_por_cm_lineal = CostoAluminio.precios_acabado.get(
-            self.tipo_acabado, 0)
-        # Cálculo ficticio para ejemplo
-        total_cm_lineal = 2 * (self.ancho + self.alto)
-        return costo_por_cm_lineal * total_cm_lineal
+        area_cm2 = self.nave.calcular_area()
+        costo_por_cm2 = CostoVidrio.precios_vidrio.get(self.tipo_vidrio, 0)
+        costo_vidrio = area_cm2 * costo_por_cm2
+        
+        if self.esmerilado:
+            costo_vidrio += CostoVidrio.precio_esmerilado
+            
+        return costo_vidrio
