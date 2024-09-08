@@ -24,9 +24,12 @@ El proyecto requiere Python 3.8 o superior. Para instalar las dependencias neces
     ```
 2. **Navegar al Directorio del Proyecto**:
 
-    ```bash 
-    cd CotizaVentanas
-    ```
+- Abre la terminal y navega al directorio donde se encuentra el proyecto. El nombre del directorio puede variar dependiendo de cómo lo hayas descargado.
+
+     ```bash
+     cd CotizaVentanas-main
+     ```
+
 3. **Crear un Entorno Virtua**:
 
 ```bash 
