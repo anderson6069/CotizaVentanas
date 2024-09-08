@@ -7,6 +7,11 @@
 El proyecto está organizado en la siguiente estructura de directorios y archivos:
 CotizaVentanas/ │ ├── app/ │ ├── docs/ │ ├── venv/ # Entorno virtual │ ├── main.py │ ├── .gitignore ├── README.md └── requirements.txt
 
+### Archivos en `docs/`
+
+- **`CotizaVentanas.md`**: Contiene el documento con los requerimientos del programa.
+- **`UML.pdf`**: Incluye el diagrama de clases UML para la estructura del proyecto.
+
 ### Archivos Principales
 
 - **`app/main.py`**: Archivo principal que ejecuta el programa. Solicita al usuario la entrada de datos y calcula el costo total de las ventanas.
