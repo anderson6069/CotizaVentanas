@@ -52,7 +52,7 @@ Para ejecutar el programa, sigue estos pasos:
 
 1. **Navegar al Directorio CotizaVentanas**:
 ```bash 
-cd CotizaVentanas
+cd CotizaVentanas-main
 ```
 2. **Ejecutar el Archivo main.py**:
 ```bash 
