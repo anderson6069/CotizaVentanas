@@ -53,7 +53,7 @@ cd CotizaVentanas
 ```
 2. **Ejecutar el Archivo main.py**:
 ```bash 
-cd python main.py
+python main.py
 ```
 
 ## Uso del Programa
