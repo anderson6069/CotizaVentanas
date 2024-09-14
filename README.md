@@ -78,7 +78,7 @@ El programa solicitará al usuario los siguientes datos:
 
 ## Archivo .gitignore
 
-El archivo .gitignore está configurado para excluir archivos y directorios no necesarios, como el entorno virtual y archivos de compilación. Asegúrate de revisar este archivo para cualquier ajuste adicional.
+El archivo .gitignore está configurado para excluir archivos y directorios no necesarios, como el entorno virtual y archivos de compilación. 
 
 ## Licencia
 
